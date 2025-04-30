@@ -103,47 +103,26 @@ const editorRef = ref(null)
 const clickPosition = ref({ x: 0, y: 0 })
 
 const availableFonts = ref([
+    'Nexa',
     'Arial',
     'Helvetica',
     'Verdana',
     'Tahoma',
     'Trebuchet MS',
-    'Gill Sans',
-    'Noto Sans',
-    'Segoe UI',
-    'Roboto',
-    'Ubuntu',
     'Times New Roman',
     'Georgia',
     'Palatino Linotype',
     'Book Antiqua',
-    'Garamond',
-    'Baskerville',
-    'Didot',
-    'Rockwell',
     'Courier New',
     'Lucida Console',
-    'Monaco',
-    'Consolas',
-    'Source Code Pro',
-    'Brush Script MT',
+    'Lucida Sans Unicode',
+    'Garamond',
     'Comic Sans MS',
-    'Pacifico',
-    'Lobster',
-    'serif',
-    'sans-serif',
-    'monospace',
-    'cursive',
-    'fantasy',
-    'system-ui',
-    'ui-serif',
-    'ui-sans-serif',
-    'ui-monospace',
-    'ui-rounded',
-    'emoji',
-    'math',
-    'fangsong'
+    'Impact',
+    'Segoe UI',
+    'Consolas'
 ])
+
 
 onMounted(() => {
     isEditMode.value = route.query.edit === 'true'
