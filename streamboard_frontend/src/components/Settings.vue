@@ -239,7 +239,7 @@ button {
 }
 
 button:hover {
-  background: #175be0;
+  background: #1b5edb;
 }
 
 .password-section {

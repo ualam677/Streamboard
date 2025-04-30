@@ -155,4 +155,9 @@ button:hover {
   background: #e74c3c;
   color: white;
 }
+
+/* Make page title blue */
+.content h1 {
+  color: #2d7bff;
+}
 </style>

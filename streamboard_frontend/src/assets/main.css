@@ -3,12 +3,12 @@
 /* Fonts */
 @font-face {
   font-family: 'Nexa';
-  src: url('@/assets/fonts/Nexa-Light.ttf') format('truetype');
+  src: url('@/assets/fonts/Nexa-Bold.ttf') format('truetype');
   font-weight: 300;
 }
 @font-face {
   font-family: 'Nexa';
-  src: url('@/assets/fonts/Nexa-Bold.ttf') format('truetype');
+  src: url('@/assets/fonts/Nexa-Heavy.ttf') format('truetype');
   font-weight: 700;
 }
 
@@ -25,8 +25,8 @@ html.dark-mode {
   --background-color: #121212;
   --text-color: #f0f0f0;
   --sidebar-background: #1f1f1f;
-  --button-background: #444444;
-  --button-hover: #666666;
+  --button-background: #2d7bff;
+  --button-hover: #1b5edb;
 }
 
 #app {
@@ -83,6 +83,10 @@ a:hover {
 
 .btn:hover {
   background: var(--button-hover);
+}
+
+.dark-mode .btn:hover {
+  background: #1b5edb;
 }
 
 /* Layout Responsive */

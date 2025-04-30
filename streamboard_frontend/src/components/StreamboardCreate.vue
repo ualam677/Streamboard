@@ -1,5 +1,5 @@
 <template>
-    <DefaultLayout>
+    <DefaultLayout :is-dark-mode="isDarkMode">
         <div class="create-streamboard-page">
             <h1 class="title">
                 ✨ {{ isEditMode ? 'Edit Streamboard' : 'Create a New Streamboard' }}
@@ -150,6 +150,9 @@ onMounted(() => {
     streamboardId.value = route.query.id || null
     if (isEditMode.value && streamboardId.value) loadExistingStreamboard()
 })
+
+// reflect current theme setting
+const isDarkMode = ref(localStorage.getItem('theme') === 'dark')
 
 const logoImage = ref(null)
 const logoFile = ref(null)
@@ -403,6 +406,8 @@ const saveStreamboard = async () => {
 
 <style>
 .create-streamboard-page {
+    background: var(--background-color);
+    color: var(--text-color);
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
@@ -410,12 +415,9 @@ const saveStreamboard = async () => {
 }
 
 .title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 30px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none !important;
+    -webkit-text-fill-color: #2d7bff !important;
+    color: #2d7bff !important;
 }
 
 .upload-box,
@@ -462,6 +464,12 @@ const saveStreamboard = async () => {
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.controls .btn {
+  background-color: #2d7bff;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .overlay-editor {

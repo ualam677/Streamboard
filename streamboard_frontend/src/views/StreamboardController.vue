@@ -6,6 +6,8 @@ import { GraphQLClient, gql } from 'graphql-request'
 import { useToast } from 'vue-toastification'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
+// reflect current theme
+const isDarkMode = ref(localStorage.getItem('theme') === 'dark')
 
 const route = useRoute()
 const toast = useToast()
@@ -235,7 +237,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <DefaultLayout>
+  <DefaultLayout :is-dark-mode="isDarkMode">
     <div class="controller-container">
       <h1>Streamboard Controller</h1>
 
@@ -357,5 +359,10 @@ onMounted(() => {
   width: 80%;
   padding: 8px;
   margin-right: 10px;
+}
+
+/* Make controller title blue */
+.controller-container > h1 {
+  color: #2d7bff;
 }
 </style>

@@ -536,12 +536,12 @@ router-link {
 }
 
 .dark-mode .btn {
-  background: #444;
+  background: #2d7bff;
   color: white;
 }
 
 .dark-mode .btn:hover {
-  background: #666;
+  background: #1b5edb;
 }
 
 .dark-mode .modal {
@@ -550,7 +550,7 @@ router-link {
 }
 
 .dark-mode .score-card {
-  background: #333;
+  background: #1b5edb;
 }
 
 .dark-mode .stream-title,

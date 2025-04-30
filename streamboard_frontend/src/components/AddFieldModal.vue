@@ -136,13 +136,15 @@ const resetModal = () => {
 }
 
 .modal-content {
-  background: white;
+  background: #2d7bff;
+  color: white;
   padding: 30px;
   width: 90%;
   max-width: 500px;
   border-radius: 15px;
   text-align: center;
   animation: fadeIn 0.3s ease-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal-title {
@@ -191,8 +193,8 @@ const resetModal = () => {
 .confirm-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background: #2d7bff;
-  color: white;
+  background: #ffffff;
+  color: black;
   border: none;
   border-radius: 10px;
   font-weight: bold;

@@ -209,7 +209,7 @@ const login = async () => {
 .form button {
   width: 100%;
   padding: 0.75rem;
-  background: linear-gradient(to right, #3ec6ff, #005eff);
+  background: #2d7bff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -219,7 +219,7 @@ const login = async () => {
 }
 
 .form button:hover {
-  opacity: 0.9;
+  background: #1b5edb;
 }
 
 .link {
