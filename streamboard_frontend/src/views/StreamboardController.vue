@@ -231,6 +231,12 @@ const copyOverlayLink = async () => {
     toast.error('Failed to copy link ❌')
   }
 }
+const incrementScore = field => {
+  field.value = Number(field.value) + 1
+}
+const decrementScore = field => {
+  field.value = Math.max(0, Number(field.value) - 1)
+}
 onMounted(() => {
   fetchStreamboard()
 })
@@ -278,7 +284,17 @@ onMounted(() => {
         <form @submit.prevent="saveChanges" class="fields-form">
           <div v-for="(field, index) in fields" :key="index" class="field-item">
             <label>{{ field.name }}</label>
-            <input v-model="field.value" type="text" />
+            <div v-if="field.name.toLowerCase().includes('score')" class="score-input">
+              <button type="button" @click="decrementScore(field)">–</button>
+              <input
+                v-model.number="field.value"
+                type="number"
+                @keydown.up.prevent="incrementScore(field)"
+                @keydown.down.prevent="decrementScore(field)"
+              />
+              <button type="button" @click="incrementScore(field)">+</button>
+            </div>
+            <input v-else v-model="field.value" type="text" />
           </div>
 
           <button type="submit" :disabled="isSaving">
@@ -379,5 +395,15 @@ onMounted(() => {
   font-weight: bold;
   font-size: 3rem;
   color: #2d7bff;
+}
+
+.score-input {
+  display: flex;
+  align-items: center;
+}
+.score-input button {
+  width: 24px;
+  height: 24px;
+  margin: 0 4px;
 }
 </style>
