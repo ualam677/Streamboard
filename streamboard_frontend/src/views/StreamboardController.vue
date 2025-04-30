@@ -27,6 +27,9 @@ const selectedMatchId = ref('')
 const startggToken = 'c56e70671542a9aef164b1d4938186ad'
 const access_token = localStorage.getItem('access_token')
 
+// add scoreboard name state
+const scoreboardName = ref('')
+
 const fetchStreamboard = async () => {
   try {
     const { data } = await axios.get(`http://127.0.0.1:8000/api/streamboard/${boardId}/`, {
@@ -35,6 +38,7 @@ const fetchStreamboard = async () => {
       }
     })
     streamboard.value = data
+    scoreboardName.value = data.name                // ← set name
     const rawFields = Array.isArray(data.layout_json) ? data.layout_json : []
     fields.value = rawFields.map(field => ({
       ...field,
@@ -245,7 +249,19 @@ onMounted(() => {
 <template>
   <DefaultLayout :is-dark-mode="isDarkMode">
     <div class="controller-container">
-      <h1>Streamboard Controller</h1>
+      <!-- title row: left static, right scoreboard name + edit -->
+      <div class="title-row">
+        <h1>Streamboard Controller</h1>
+        <div class="board-info">
+          <span>{{ scoreboardName }}</span>
+          <router-link 
+            :to="`/boards/new?id=${boardId}&edit=true`" 
+            class="edit-btn"
+          >
+            Edit
+          </router-link>
+        </div>
+      </div>
 
       <div class="startgg-section">
         <label>Tournament URL:</label>
@@ -390,11 +406,12 @@ onMounted(() => {
 }
 
 /* larger Nexa Heavy controller title */
-.controller-container > h1 {
+.title-row h1 {
   font-family: 'Nexa', sans-serif;
   font-weight: bold;
   font-size: 3rem;
   color: #2d7bff;
+  margin: 0;
 }
 
 .score-input {
@@ -409,5 +426,34 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+/* title row layout */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.board-info {
+  display: flex;
+  align-items: center;
+}
+
+.board-info span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.edit-btn {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #2d7bff;
+  background: #fff;
+  color: #2d7bff;
+  border-radius: 4px;
+  text-decoration: none;
 }
 </style>

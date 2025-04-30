@@ -4,15 +4,22 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 const images = [
-    'background_pic/login.jpg',
-    'background_pic/signup.jpg',
+  'background_pic/1.jpg',
+  'background_pic/2.jpeg',
+  'background_pic/3.jpg',
+  'background_pic/4.jpg',
+  'background_pic/5.webp',
+  'background_pic/6.jpg',
+  'background_pic/7.webp',
+  'background_pic/8.jpg',
+  'background_pic/9.jpg',
 ]
 const currentImageIndex = ref(0)
 
 onMounted(() => {
     setInterval(() => {
         currentImageIndex.value = (currentImageIndex.value + 1) % images.length
-    }, 2000)
+    }, 5000)
 })
 
 const router = useRouter()
@@ -90,7 +97,7 @@ const signup = async () => {
 
         <div class="login-right">
             <div class="login-container">
-                <img src="https://i.imgur.com/VudocuS.png" alt="Logo" class="logo" />
+                <img src="https://i.imgur.com/6SCZbId.png" alt="Logo" class="logo" />
                 <p class="subtitle">Sign up to get started with Streamboard</p>
 
                 <form @submit.prevent="signup" class="form">
@@ -253,7 +260,7 @@ const signup = async () => {
 .form button {
     width: 100%;
     padding: 0.75rem;
-    background: #2d7bff;
+    background: linear-gradient(to right, #3ec6ff, #005eff);
     color: white;
     border: none;
     border-radius: 8px;
@@ -263,7 +270,7 @@ const signup = async () => {
 }
 
 .form button:hover {
-    background: #1b5edb;
+    opacity: 0.9;
 }
 
 .link {

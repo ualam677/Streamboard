@@ -1,7 +1,7 @@
 <template>
     <aside class="sidebar">
         <div class="sidebar-icons">
-            <router-link to="/">
+            <router-link to="/dashboard" class="icon-img">
                 <img src="https://i.imgur.com/HNDynE2.png" alt="Icon" class="icon-img" />
             </router-link>
             <div v-for="board in recentBoards" :key="board.id" class="recent-streamboard"
@@ -86,7 +86,7 @@ onMounted(() => {
 }
 
 .icon-img {
-    width: 40px;
+    width: 50px;
 }
 
 .icon-box {

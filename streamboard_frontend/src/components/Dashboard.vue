@@ -307,7 +307,7 @@ onMounted(() => {
             <div v-else class="score-card">Waiting for match data...</div>
           </div>
           <div class="watermark-logo">
-            <img src="https://i.imgur.com/VudocuS.png" alt="Streamboard Logo" />
+            <img src="https://i.imgur.com/6SCZbId.png" alt="Streamboard Logo" />
           </div>
         </div>
       </main>
@@ -540,12 +540,12 @@ router-link {
 }
 
 .dark-mode .btn {
-  background: #444;
+  background: #195bb1;
   color: white;
 }
 
 .dark-mode .btn:hover {
-  background: #666;
+  background: #13488d;
 }
 
 .dark-mode .modal {
@@ -554,7 +554,7 @@ router-link {
 }
 
 .dark-mode .score-card {
-  background: #333;
+  background: #195bb1;
 }
 
 .dark-mode .stream-title,
