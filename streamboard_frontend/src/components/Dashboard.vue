@@ -350,8 +350,12 @@ body {
   border-bottom: 4px solid black;
 }
 
+/* larger Nexa Heavy greeting */
 .greeting h1 {
-  font-size: 36px;
+  font-family: 'Nexa', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  color: var(--text-color);
 }
 
 .username {
@@ -536,12 +540,12 @@ router-link {
 }
 
 .dark-mode .btn {
-  background: #2d7bff;
+  background: #444;
   color: white;
 }
 
 .dark-mode .btn:hover {
-  background: #1b5edb;
+  background: #666;
 }
 
 .dark-mode .modal {
@@ -550,7 +554,7 @@ router-link {
 }
 
 .dark-mode .score-card {
-  background: #1b5edb;
+  background: #333;
 }
 
 .dark-mode .stream-title,

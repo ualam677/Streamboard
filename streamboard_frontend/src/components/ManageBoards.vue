@@ -156,8 +156,11 @@ button:hover {
   color: white;
 }
 
-/* Make page title blue */
+/* larger Nexa Heavy title */
 .content h1 {
-  color: #2d7bff;
+  font-family: 'Nexa', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  color: #2d7bff; /* existing color */
 }
 </style>

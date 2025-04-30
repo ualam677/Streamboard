@@ -414,10 +414,12 @@ const saveStreamboard = async () => {
     text-align: center;
 }
 
+/* larger Nexa Heavy title */
 .title {
-    background: none !important;
-    -webkit-text-fill-color: #2d7bff !important;
-    color: #2d7bff !important;
+  font-family: 'Nexa', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  color: #2d7bff !important;
 }
 
 .upload-box,

@@ -373,8 +373,11 @@ onMounted(() => {
   margin-right: 10px;
 }
 
-/* Make controller title blue */
+/* larger Nexa Heavy controller title */
 .controller-container > h1 {
+  font-family: 'Nexa', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
   color: #2d7bff;
 }
 </style>
