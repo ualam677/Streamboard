@@ -273,14 +273,6 @@ onMounted(() => {
       </div>
 
       <div v-if="streamboard">
-        <div class="overlay-preview-wrapper">
-          <iframe
-            :src="overlayLink"
-            frameborder="0"
-            class="overlay-preview"
-          ></iframe>
-        </div>
-
         <form @submit.prevent="saveChanges" class="fields-form">
           <div v-for="(field, index) in fields" :key="index" class="field-item">
             <label>{{ field.name }}</label>
@@ -301,6 +293,14 @@ onMounted(() => {
             {{ isSaving ? 'Saving...' : 'Save Changes' }}
           </button>
         </form>
+
+        <div class="overlay-preview-wrapper">
+          <iframe
+            :src="overlayLink"
+            frameborder="0"
+            class="overlay-preview"
+          ></iframe>
+        </div>
 
         <div class="overlay-link">
           <h3>Public Overlay Link:</h3>
@@ -405,5 +405,9 @@ onMounted(() => {
   width: 24px;
   height: 24px;
   margin: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 </style>

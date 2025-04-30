@@ -10,7 +10,7 @@ import StreamboardController from '@/views/StreamboardController.vue'
 
 
 const routes = [
-    { path: '/', redirect: '/signup' },
+    { path: '/', redirect: '/login' },
     { path: '/login', component: Login },
     { path: '/signup', component: Signup },
     { path: '/dashboard', component: Dashboard },
