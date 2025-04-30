@@ -267,7 +267,13 @@ onMounted(() => {
       </div>
 
       <div v-if="streamboard">
-        <img :src="streamboard.background_image" class="background-preview" alt="Background" />
+        <div class="overlay-preview-wrapper">
+          <iframe
+            :src="overlayLink"
+            frameborder="0"
+            class="overlay-preview"
+          ></iframe>
+        </div>
 
         <form @submit.prevent="saveChanges" class="fields-form">
           <div v-for="(field, index) in fields" :key="index" class="field-item">
@@ -313,10 +319,16 @@ onMounted(() => {
   border-radius: 8px;
 }
 
-.background-preview {
+.overlay-preview-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.overlay-preview {
   width: 100%;
   max-width: 960px;
-  margin-bottom: 20px;
+  aspect-ratio: 16/9;
+  border: 1px solid #ccc;
 }
 
 .fields-form {
