@@ -40,14 +40,7 @@
   const fetchStreamboard = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/streamboard/${boardId}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-              'access_token'
-            )}`,
-          },
-        }
+        `http://127.0.0.1:8000/api/streamboard/${boardId}/retrieve/`
       )
       const data = response.data
       backgroundImageUrl.value = data.background_image || ''
@@ -133,4 +126,3 @@
     z-index: 2;
   }
   </style>
-  

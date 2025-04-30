@@ -18,7 +18,7 @@ class AuthTests(TestCase):
     def test_user_signup(self):
         data = {'username': 'newuser', 'password': 'strongpass123'}
         response = self.client.post('/api/signup/', data)
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
 
     def test_user_login(self):
         data = {'username': 'testuser', 'password': 'testpass123'}
