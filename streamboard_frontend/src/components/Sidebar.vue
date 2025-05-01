@@ -1,9 +1,11 @@
 <template>
     <aside class="sidebar">
-        <div class="sidebar-icons">
+        <div class="sidebar-top">
             <router-link to="/dashboard" class="icon-img">
                 <img src="https://i.imgur.com/HNDynE2.png" alt="Icon" class="icon-img" />
             </router-link>
+        </div>
+        <div class="sidebar-boards">
             <div v-for="board in recentBoards" :key="board.id" class="recent-streamboard"
                 @click="goToController(board.id)" style="cursor: pointer;">
                 <div class="icon-box">
@@ -77,15 +79,36 @@ onMounted(() => {
     align-items: center;
     padding: 20px 0;
     z-index: 1000;
-    overflow: hidden;
     border-right: #1a4aac 5px solid;
 }
 
-.sidebar-icons {
+.sidebar-top {
+    margin-bottom: 15px;
+}
+
+.sidebar-boards {
     display: flex;
     flex-direction: column;
     gap: 25px;
     align-items: center;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px); /* Adjust to leave space for top and bottom elements */
+    scrollbar-width: thin;
+    scrollbar-color: #1a4aac #0c1c2c;
+    padding: 0 15px;
+}
+
+.sidebar-boards::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-boards::-webkit-scrollbar-track {
+    background: #0c1c2c;
+}
+
+.sidebar-boards::-webkit-scrollbar-thumb {
+    background-color: #1a4aac;
+    border-radius: 10px;
 }
 
 .icon-img {
@@ -135,9 +158,16 @@ onMounted(() => {
         padding: 10px;
     }
 
-    .sidebar-icons {
+    .sidebar-top {
+        margin-bottom: 0;
+    }
+
+    .sidebar-boards {
         flex-direction: row;
-        gap: 15px;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 10px;
     }
 
     .logout-icon {
