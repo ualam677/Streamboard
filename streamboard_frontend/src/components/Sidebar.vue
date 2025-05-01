@@ -5,21 +5,25 @@
                 <img src="https://i.imgur.com/HNDynE2.png" alt="Icon" class="icon-img" />
             </router-link>
         </div>
-        <div class="sidebar-boards">
-            <div v-for="board in recentBoards" :key="board.id" class="recent-streamboard"
-                @click="goToController(board.id)" style="cursor: pointer;">
-                <div class="icon-box">
-                    <template v-if="board.logo">
-                        <img :src="board.logo" alt="Board Logo" class="logo-image" />
-                    </template>
-                    <template v-else-if="board.title">
-                        <span class="letter-icon">{{ board.title.charAt(0).toUpperCase() }}</span>
-                    </template>
-                    <template v-else>
-                        <span class="letter-icon"></span>
-                    </template>
+        <div class="sidebar-container">
+            <div class="fade-top"></div>
+            <div class="sidebar-boards">
+                <div v-for="board in recentBoards" :key="board.id" class="recent-streamboard"
+                    @click="goToController(board.id)" style="cursor: pointer;">
+                    <div class="icon-box">
+                        <template v-if="board.logo">
+                            <img :src="board.logo" alt="Board Logo" class="logo-image" />
+                        </template>
+                        <template v-else-if="board.title">
+                            <span class="letter-icon">{{ board.title.charAt(0).toUpperCase() }}</span>
+                        </template>
+                        <template v-else>
+                            <span class="letter-icon"></span>
+                        </template>
+                    </div>
                 </div>
             </div>
+            <div class="fade-bottom"></div>
         </div>
         <div class="logout-icon" @click="logout">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/logout-rounded-left.png" alt="Logout" />
@@ -86,29 +90,39 @@ onMounted(() => {
     margin-bottom: 15px;
 }
 
+.sidebar-container {
+    position: relative;
+    flex-grow: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
 .sidebar-boards {
     display: flex;
     flex-direction: column;
     gap: 25px;
     align-items: center;
     overflow-y: auto;
-    max-height: calc(100vh - 160px); /* Adjust to leave space for top and bottom elements */
-    scrollbar-width: thin;
-    scrollbar-color: #1a4aac #0c1c2c;
+    max-height: 100%;
+    height: 100%;
+    scrollbar-width: none; /* Firefox */
+    scrollbar-color: transparent transparent;
     padding: 0 15px;
+    padding-bottom: 20px; /* Add padding at the bottom for spacing before logout */
+    padding-top: 10px;
 }
 
 .sidebar-boards::-webkit-scrollbar {
-    width: 5px;
+    display: none; /* Safari and Chrome */
+    width: 0;
 }
 
 .sidebar-boards::-webkit-scrollbar-track {
-    background: #0c1c2c;
+    background: transparent;
 }
 
 .sidebar-boards::-webkit-scrollbar-thumb {
-    background-color: #1a4aac;
-    border-radius: 10px;
+    background-color: transparent;
 }
 
 .icon-img {
@@ -144,9 +158,47 @@ onMounted(() => {
   height: 100%;
 } 
 
+.logout-icon {
+  padding-top: 5px;
+  position: relative;
+}
+
+.logout-icon::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(12, 28, 44, 0), #0c1c2c);
+  pointer-events: none;
+}
+
 .logout-icon img {
     width: 30px;
     cursor: pointer;
+}
+
+.fade-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 5px; /* Account for the border on the right */
+    height: 15px;
+    background: linear-gradient(to bottom, #0c1c2c, rgba(12, 28, 44, 0));
+    z-index: 10;
+    pointer-events: none;
+}
+
+.fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 5px; /* Account for the border on the right */
+    height: 30px;
+    background: linear-gradient(to top, #0c1c2c, rgba(12, 28, 44, 0));
+    z-index: 10;
+    pointer-events: none;
 }
 
 @media (max-width: 768px) {
@@ -168,12 +220,20 @@ onMounted(() => {
         overflow-x: auto;
         overflow-y: hidden;
         padding: 0 10px;
+        scrollbar-width: none;
     }
 
-    .logout-icon {
-        position: absolute;
-        right: 20px;
-        top: 20px;
+    .sidebar-boards::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sidebar-container {
+        flex-grow: 1;
+        width: auto;
+    }
+    
+    .fade-top, .fade-bottom {
+        display: none;
     }
 }
 </style>
