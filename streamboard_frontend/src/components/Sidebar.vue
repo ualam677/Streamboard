@@ -184,7 +184,7 @@ onMounted(() => {
     top: 0;
     left: 0;
     right: 5px; /* Account for the border on the right */
-    height: 15px;
+    height: 10px;
     background: linear-gradient(to bottom, #0c1c2c, rgba(12, 28, 44, 0));
     z-index: 10;
     pointer-events: none;
