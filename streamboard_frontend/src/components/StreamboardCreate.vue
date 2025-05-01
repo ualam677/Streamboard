@@ -364,7 +364,11 @@ const saveStreamboard = async () => {
             formData.append('background_image', backgroundFile.value)
             formData.append('layout_json', JSON.stringify(fieldsToSave))
             formData.append('title', boardTitle.value)
-            formData.append('logo', logoFile.value)
+            
+            // Only append logo if it exists
+            if (logoFile.value) {
+                formData.append('logo', logoFile.value)
+            }
 
             const response = await axios.post('http://127.0.0.1:8000/api/streamboard/', formData, {
                 headers: {
