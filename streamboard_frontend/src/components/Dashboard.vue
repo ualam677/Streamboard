@@ -107,10 +107,13 @@ const applyTheme = () => {
 const fetchRecentBoards = async () => {
   try {
     const accessToken = localStorage.getItem('access_token')
-    const response = await axios.get('http://127.0.0.1:8000/api/streamboard/recent-viewed/', {
+    const response = await axios.get('http://127.0.0.1:8000/api/streamboard/list/', {
       headers: { Authorization: `Bearer ${accessToken}` }
     })
+    // Sort by last_view date, newest first, and limit to 5 items
     recentBoards.value = response.data
+      .sort((a, b) => new Date(b.last_view) - new Date(a.last_view))
+      .slice(0, 6) // Take only the 5 most recent boards
   } catch (error) {
     console.error('Failed to fetch recent streamboards:', error)
   }

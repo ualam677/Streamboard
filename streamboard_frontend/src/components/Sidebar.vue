@@ -42,10 +42,13 @@ const logout = () => {
 const fetchRecentBoards = async () => {
     try {
         const accessToken = localStorage.getItem('access_token')
-        const response = await axios.get('http://127.0.0.1:8000/api/streamboard/recent-viewed/', {
+        const response = await axios.get('http://127.0.0.1:8000/api/streamboard/list/', {
             headers: { Authorization: `Bearer ${accessToken}` }
         })
-        recentBoards.value = response.data
+        // Sort by last_view date, newest first
+        recentBoards.value = response.data.sort((a, b) => 
+            new Date(b.last_view) - new Date(a.last_view)
+        )
     } catch (error) {
         console.error('Failed to fetch recent streamboards:', error)
     }
