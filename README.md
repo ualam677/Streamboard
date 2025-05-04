@@ -86,15 +86,6 @@ Streamboard is a web-based application designed for managing and displaying tour
 
 ---
 
-## API Documentation
-
-The backend provides a Swagger-based API documentation at:
-```
-http://127.0.0.1:8000/api/docs/
-```
-
----
-
 ## Environment Variables
 
 ### Backend
